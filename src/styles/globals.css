@@ -1,0 +1,324 @@
+@theme {
+  /* ─── Background Colors ─── */
+  --color-bg-primary: #09090b;
+  --color-bg-secondary: #0c0c0e;
+  --color-bg-tertiary: #121214;
+
+  /* ─── Surface Colors ─── */
+  --color-surface-primary: rgba(24, 24, 27, 0.8);
+  --color-surface-secondary: rgba(39, 39, 42, 0.6);
+  --color-surface-tertiary: rgba(63, 63, 70, 0.4);
+
+  /* ─── Accent Colors ─── */
+  --color-accent-primary: #6366f1;
+  --color-accent-secondary: #8b5cf6;
+  --color-accent-tertiary: #a78bfa;
+
+  /* ─── Text Hierarchy ─── */
+  --color-text-primary: #fafafa;
+  --color-text-secondary: #a1a1aa;
+  --color-text-tertiary: #71717a;
+  --color-text-quaternary: #52525b;
+  --color-text-inverse: #09090b;
+
+  /* ─── Border Colors ─── */
+  --color-border-primary: #27272a;
+  --color-border-secondary: #3f3f46;
+  --color-border-tertiary: #52525b;
+
+  /* ─── Shadows ─── */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 24px rgba(99, 102, 241, 0.1);
+
+  /* ─── Border Radius ─── */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+
+  /* ─── Font Families ─── */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* ─── Container Max-Widths ─── */
+  --container-xs: 540px;
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+
+  /* ─── Spacing Extras ─── */
+  --spacing-section: 6rem;
+  --spacing-section-sm: 4rem;
+  --spacing-section-lg: 8rem;
+
+  /* ─── Transition Easings ─── */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-expo: cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+/* ─── Base Layer ─── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: var(--color-border-primary);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: rgba(99, 102, 241, 0.25);
+    color: var(--color-text-primary);
+  }
+}
+
+/* ─── Typography Utilities ─── */
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  color: var(--color-text-secondary);
+}
+
+.body-text {
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+.caption {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-text-tertiary);
+  letter-spacing: 0.01em;
+}
+
+/* ─── Visual Utility Classes ─── */
+.glass {
+  background-color: var(--color-surface-primary);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  border: 1px solid var(--color-border-primary);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-text-primary) 0%, var(--color-text-secondary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-accent {
+  background: linear-gradient(135deg, var(--color-accent-primary) 0%, var(--color-accent-secondary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.animated-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background-color: var(--color-accent-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-duration-base, 0.25s) cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animated-underline:hover::after {
+  transform: scaleX(1);
+}
+
+.hover-lift {
+  transition: transform var(--transition-duration-base, 0.25s) cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow var(--transition-duration-base, 0.25s) cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.section-spacing {
+  padding-top: var(--spacing-section);
+  padding-bottom: var(--spacing-section);
+}
+
+.section-spacing-sm {
+  padding-top: var(--spacing-section-sm);
+  padding-bottom: var(--spacing-section-sm);
+}
+
+/* ─── Background Atmosphere ─── */
+.background-atmosphere {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -20%, rgba(99, 102, 241, 0.06), transparent),
+    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(139, 92, 246, 0.04), transparent),
+    radial-gradient(ellipse 40% 40% at 20% 70%, rgba(99, 102, 241, 0.03), transparent);
+}
+
+/* ─── Video Cinematic Layers ─── */
+.video-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.25);
+  filter: blur(38px) saturate(1.15) brightness(0.55);
+  opacity: 0.85;
+}
+
+.video-fg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  filter: saturate(1.05) contrast(1.03);
+}
+
+.video-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    120% 90% at 50% 45%,
+    rgba(8, 8, 10, 0) 40%,
+    rgba(8, 8, 10, 0.55) 85%,
+    rgba(8, 8, 10, 0.85) 100%
+  );
+}
+
+.video-gradient-bottom {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 8, 10, 0) 40%,
+    rgba(8, 8, 10, 0.55) 75%,
+    rgba(8, 8, 10, 0.92) 100%
+  );
+}
+
+.video-gradient-top {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    0deg,
+    rgba(8, 8, 10, 0) 80%,
+    rgba(8, 8, 10, 0.65) 100%
+  );
+}
+
+.video-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  z-index: 2;
+}
+
+.video-particles > canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ─── REC Badge ─── */
+@keyframes rec-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
+.rec-dot {
+  animation: rec-pulse 1.8s ease-in-out infinite;
+}
+
+/* ─── Sound hint ─── */
+@keyframes hint-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.55); }
+  70% { box-shadow: 0 0 0 9px rgba(99, 102, 241, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+}
+
+.sound-hint-pulse {
+  animation: hint-pulse 1.8s ease-out infinite;
+}
+
+/* ─── Scroll pulse ─── */
+@keyframes scroll-fall {
+  0% { top: -100%; }
+  60% { top: 100%; }
+  100% { top: 100%; }
+}
+
+.scroll-pulse {
+  animation: scroll-fall 2.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rec-dot,
+  .sound-hint-pulse,
+  .scroll-pulse {
+    animation: none;
+  }
+}
+
+/* ─── Keyframes ─── */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
