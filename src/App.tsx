@@ -1,5 +1,5 @@
 import { Navigation } from '@/components/layout/Navigation'
-import { Hero, Projects, Journey, Skills, About, Achievements } from '@/components/sections'
+import { Hero, Projects, Journey, Skills, About, Achievements, Certifications, Contact } from '@/components/sections'
 
 function App() {
   return (
@@ -13,6 +13,8 @@ function App() {
         <Skills />
         <About />
         <Achievements />
+        <Certifications />
+        <Contact />
       </main>
     </>
   )

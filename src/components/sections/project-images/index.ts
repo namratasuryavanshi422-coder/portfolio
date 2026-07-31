@@ -1,0 +1,6 @@
+export { AiScamImage } from './AiScamImage'
+export { NewsRecommendationImage } from './NewsRecommendationImage'
+export { SmartParkingImage } from './SmartParkingImage'
+export { AirQualityImage } from './AirQualityImage'
+export { RunwayFogImage } from './RunwayFogImage'
+export { GitVisionImage } from './GitVisionImage'
